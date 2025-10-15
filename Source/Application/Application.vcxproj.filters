@@ -14,12 +14,21 @@
     <Filter Include="Assets\Platformer">
       <UniqueIdentifier>{0347569d-48c0-471b-8c02-8fb12964f431}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{55ea3ebc-c0d4-4ddb-92f9-90826f9dd8b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Textures">
+      <UniqueIdentifier>{bceb6380-1ffa-446b-b01e-2d878e3137bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="ApplicationPCH.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FallenBehind.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,5 +53,16 @@
     <None Include="..\..\Build\Assets\Platformer\Tilemaps\tilemap.json">
       <Filter>Assets\Platformer</Filter>
     </None>
+    <None Include="..\..\Build\Assets\shaders\basic.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Build\Assets\texture\beast.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
