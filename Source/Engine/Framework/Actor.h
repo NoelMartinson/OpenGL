@@ -8,41 +8,15 @@
 #include <vector>
 
 namespace neu {
-	/// <summary>
-	/// Base class for all game objects in the scene.
-	/// 
-	/// Actor represents any entity in the game world that can be updated, drawn,
-	/// and managed by a Scene. It uses a component-based architecture where
-	/// functionality is added through attachable Component objects rather than
-	/// inheritance, promoting composition over inheritance design principles.
-	/// 
-	/// Key Features:
-	/// - Component-based architecture for flexible functionality
-	/// - Transform system for position, rotation, and scale
-	/// - Lifecycle management (Start, Update, Draw, Destroyed)
-	/// - Serialization support for data-driven content
-	/// - Tag system for grouping and querying
-	/// - Persistence flags for scene transitions
-	/// - Automatic lifespan management
-	/// </summary>
+	
 	class Actor : public Object {
 	public:
-		// String identifier for grouping related actors
-		// Used by Scene::GetActorsByTag() for flexible queries
 		std::string tag;
 
-		// Destruction flag checked by Scene during update loop
-		// When true, actor will be removed and Destroyed() will be called
 		bool destroyed{ false };
 
-		// Persistence flag for scene transitions
-		// If true, actor survives Scene::RemoveAllActors(false)
-		// Useful for player objects, UI, or cross-level entities
 		bool persistent{ false };
 
-		// Automatic lifetime management in seconds
-		// When > 0, decrements each frame and sets destroyed=true at zero
-		// Useful for temporary effects, projectiles, particles
 		float lifespan{ 0 };
 
 		// Back-reference to containing scene (non-owning pointer)

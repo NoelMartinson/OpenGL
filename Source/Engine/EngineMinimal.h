@@ -41,22 +41,38 @@
 #include "Audio/AudioSystem.h"
 
 // renderer
-#include "Renderer/Font.h"
-#include "Renderer/Mesh.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/Text.h"
 #include "Renderer/Texture.h"
 #include "Renderer/TextureAnimation.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Program.h"
+#include "Renderer/VertexBuffer.h"
+#include "Renderer/Model.h"
+#include "Renderer/Material.h"
 
 // physics
 #include "Physics/Collidable.h"
 
+//componenets 
+#include "Components/ModelRenderer.h"
+#include "Components/CameraComponent.h"
+#include "Components/LightComponent.h"
+#include "Components/FirstPersonController.h"
+
 // third-party library
 #include <fmod.hpp>
 #include <fmod_errors.h>
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include <imgui.h>
+#include <imgui_internal.h>
 
 // standard library
 #include <string>
@@ -66,9 +82,9 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <set>
 #include <cstdlib>
 #include <random>
 #include <algorithm>
 #include <cmath>
 #include <filesystem>
-

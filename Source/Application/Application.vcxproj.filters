@@ -20,15 +20,18 @@
     <Filter Include="Assets\Textures">
       <UniqueIdentifier>{bceb6380-1ffa-446b-b01e-2d878e3137bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Materials">
+      <UniqueIdentifier>{de7c2736-140f-4db4-9bdf-015c25702515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Scenes">
+      <UniqueIdentifier>{89b8cf4f-17eb-45f6-ab19-9b150de143a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="ApplicationPCH.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="FallenBehind.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,9 +62,45 @@
     <None Include="..\..\Build\Assets\shaders\basic.vert">
       <Filter>Assets\Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\shaders\basic_lit.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic_lit.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic_lit.prog">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\spot.mat">
+      <Filter>Assets\Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic_phong.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic_phong.prog">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\shaders\basic_phong.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene01.json">
+      <Filter>Assets\Scenes</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\Halloween.mat">
+      <Filter>Assets\Materials</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Build\Assets\texture\beast.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="..\..\Build\Assets\texture\spot_diffuse.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="..\..\Build\Assets\textures\HalloweentexMask.png">
+      <Filter>Assets\Textures</Filter>
+    </Image>
+    <Image Include="..\..\Build\Assets\textures\HalloweenTex.png">
       <Filter>Assets\Textures</Filter>
     </Image>
   </ItemGroup>

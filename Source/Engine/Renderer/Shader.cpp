@@ -2,8 +2,8 @@
 
 namespace neu
 {
-	Shader::~Shader()
-	{
+	Shader::~Shader(){
+		if (m_shader) glDeleteShader(m_shader);
 	}
 
 	bool Shader::Load(const std::string& filename, GLuint shaderType)
