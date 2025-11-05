@@ -1,7 +1,7 @@
 #pragma once
 
 namespace neu {
-	class FirstPersonController : public Component, public GUI {
+	class FirstPersonController : public Component {
 	public:
 		CLASS_PROTOTYPE(FirstPersonController)
 
@@ -12,7 +12,7 @@ namespace neu {
 		void UpdateGUI() override;
 
 	public:
-		float sensitivity = 0.1f; // mouse sensitity
+		float sensitivity = 0.1f; // mouse sensitivity
 		float speed = 3; // movement speed
 		float yaw = 0;
 		float pitch = 0;

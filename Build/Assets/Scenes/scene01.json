@@ -94,7 +94,7 @@
         },
         {
           "type": "FirstPersonController",
-          "speed": 5,
+          "speed": 10,
           "sensitivity": 0.2
         }
       ]
@@ -110,7 +110,7 @@
       "components": [
         {
           "type": "LightComponent",
-          "color": [ 1, 1, 0 ]
+          "color": [ 1, 1, 1 ]
         }
       ]
     }
