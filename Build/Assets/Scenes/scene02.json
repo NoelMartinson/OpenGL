@@ -4,14 +4,30 @@
       "name": "spot",
       "persistent": true,
       "transform": {
-        "position": [ 0, -0.2, 0 ],
+        "position": [ 0, 0, 0 ],
         "rotation": [ 0, 180, 0 ],
         "scale": [ 1, 1, 1 ]
       },
       "components": [
         {
           "type": "ModelRenderer",
-          "model": "models/spot.obj",
+          "model": "models/candle.fbx",
+          "material": "materials/candle.mat"
+        }
+      ]
+    },
+    {
+      "name": "plane",
+      "persistent": true,
+      "transform": {
+        "position": [ 0, -0.75, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "scale": [ 1, 1, 1 ]
+      },
+      "components": [
+        {
+          "type": "ModelRenderer",
+          "model": "models/plane.obj",
           "material": "materials/spot.mat"
         }
       ]
@@ -37,11 +53,11 @@
       ]
     },
     {
-      "name": "Light",
+      "name": "Light Spot",
       "persistent": true,
       "transform": {
-        "position": [ 0, 10, 0 ],
-        "rotation": [ 0, 0, 0 ],
+        "position": [ 0, 5, 0 ],
+        "rotation": [ 90, 0, 0 ],
         "scale": [ 1, 1, 1 ]
       },
       "components": [
@@ -49,15 +65,18 @@
           "type": "LightComponent",
           "color": [ 1, 1, 1 ],
           "intensity": 2,
-          "range": 20
+          "range": 20,
+          "lightType": "spot",
+          "innerCutoff": 2,
+          "outerCutoff": 30
         }
       ]
     },
     {
-      "name": "Red",
+      "name": "Red Point",
       "persistent": true,
       "transform": {
-        "position": [ 5, 5, 0 ],
+        "position": [ -1, 15.1, 0.7 ],
         "rotation": [ 0, 0, 0 ],
         "scale": [ 1, 1, 1 ]
       },
@@ -66,12 +85,15 @@
           "type": "LightComponent",
           "color": [ 1, 0, 0 ],
           "intensity": 1,
-          "range": 30
+          "range": 30,
+          "lightType": "point",
+          "innerCutoff": 4,
+          "outerCutoff": 10
         }
       ]
     },
     {
-      "name": "Green",
+      "name": "Green Directional",
       "persistent": true,
       "transform": {
         "position": [ 0, -5, 0 ],
@@ -83,7 +105,10 @@
           "type": "LightComponent",
           "color": [ 0, 1, 0 ],
           "intensity": 2,
-          "range": 30
+          "range": 30,
+          "lightType": "directional",
+          "innerCutoff": 4,
+          "outerCutoff": 10
         }
       ]
     }

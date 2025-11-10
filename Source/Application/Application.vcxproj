@@ -199,6 +199,7 @@
     <ClInclude Include="ApplicationPCH.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\materials\candle.mat" />
     <None Include="..\..\Build\Assets\materials\Halloween.mat" />
     <None Include="..\..\Build\Assets\materials\spot.mat" />
     <None Include="..\..\Build\Assets\Meshes\enemy.msh" />
@@ -216,6 +217,9 @@
     <None Include="..\..\Build\Assets\shaders\basic_phong.frag" />
     <None Include="..\..\Build\Assets\shaders\basic_phong.prog" />
     <None Include="..\..\Build\Assets\shaders\basic_phong.vert" />
+    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.frag" />
+    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.prog" />
+    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.vert" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
