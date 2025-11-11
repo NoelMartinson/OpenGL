@@ -200,7 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\materials\candle.mat" />
+    <None Include="..\..\Build\Assets\materials\crate.mat" />
     <None Include="..\..\Build\Assets\materials\Halloween.mat" />
+    <None Include="..\..\Build\Assets\materials\plane.mat" />
     <None Include="..\..\Build\Assets\materials\spot.mat" />
     <None Include="..\..\Build\Assets\Meshes\enemy.msh" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\level.json" />
@@ -211,15 +213,12 @@
     <None Include="..\..\Build\Assets\Scenes\scene02.json" />
     <None Include="..\..\Build\Assets\shaders\basic.frag" />
     <None Include="..\..\Build\Assets\shaders\basic.vert" />
-    <None Include="..\..\Build\Assets\shaders\basic_lit.frag" />
-    <None Include="..\..\Build\Assets\shaders\basic_lit.prog" />
-    <None Include="..\..\Build\Assets\shaders\basic_lit.vert" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong.frag" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong.prog" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong.vert" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.frag" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.prog" />
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.vert" />
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.prog" />
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.vert" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.frag" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.prog" />
+    <None Include="..\..\Build\Assets\shaders\lit_phong.vert" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

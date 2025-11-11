@@ -62,26 +62,17 @@
     <None Include="..\..\Build\Assets\shaders\basic.vert">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_lit.frag">
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.frag">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_lit.vert">
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.vert">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_lit.prog">
+    <None Include="..\..\Build\Assets\shaders\lit_vertex.prog">
       <Filter>Assets\Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\materials\spot.mat">
       <Filter>Assets\Materials</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong.frag">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong.prog">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong.vert">
-      <Filter>Assets\Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\Scenes\scene01.json">
       <Filter>Assets\Scenes</Filter>
@@ -92,16 +83,22 @@
     <None Include="..\..\Build\Assets\Scenes\scene02.json">
       <Filter>Assets\Scenes</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.vert">
+    <None Include="..\..\Build\Assets\shaders\lit_phong.vert">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.prog">
+    <None Include="..\..\Build\Assets\shaders\lit_phong.prog">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Build\Assets\shaders\basic_phong_complete_lights.frag">
+    <None Include="..\..\Build\Assets\shaders\lit_phong.frag">
       <Filter>Assets\Shaders</Filter>
     </None>
     <None Include="..\..\Build\Assets\materials\candle.mat">
+      <Filter>Assets\Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\crate.mat">
+      <Filter>Assets\Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\materials\plane.mat">
       <Filter>Assets\Materials</Filter>
     </None>
   </ItemGroup>
