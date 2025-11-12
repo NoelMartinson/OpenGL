@@ -49,6 +49,7 @@
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/Model.h"
 #include "Renderer/Material.h"
+#include "Renderer/CubeMap.h"
 
 // physics
 #include "Physics/Collidable.h"

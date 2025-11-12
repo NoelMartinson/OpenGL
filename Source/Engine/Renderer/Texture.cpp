@@ -2,28 +2,14 @@
 #include "Renderer.h"
 
 namespace neu {
-    /// <summary>
-    /// Destructor ensures proper cleanup of SDL resources.
-    /// Destroys the SDL texture if it exists, freeing GPU memory.
-    /// </summary>
+    
     Texture::~Texture() {
-        // If texture exists, destroy texture to free GPU resources
         if (m_texture) glDeleteTextures(1, &m_texture);
     }
 
-    /// <summary>
-    /// Loads an image file from disk and creates an SDL texture for rendering.
-    /// The loading process involves two steps:
-    /// 1. Load the image into a CPU-side surface using SDL_image
-    /// 2. Create a GPU-side texture from the surface for efficient rendering
-    /// The surface is freed after texture creation to conserve memory.
-    /// </summary>
-    /// <param name="filename">Path to the image file to load</param>
-    /// <param name="renderer">Reference to the Renderer that provides the SDL_Renderer context</param>
-    /// <returns>True if the texture was successfully loaded and created; otherwise, false</returns>
+   
     bool Texture::Load(const std::string& filename) {
-        // Load image onto a CPU-side surface
-        // SDL_image supports various formats: PNG, JPG, BMP, GIF, etc.
+        
         SDL_Surface* surface = IMG_Load(filename.c_str());
         if (!surface) {
             LOG_ERROR("Could not load image: {}", filename);
