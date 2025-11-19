@@ -17,6 +17,8 @@ namespace neu
 		bool Load(const std::string& filename);
 		void AttachShader(const res_t<Shader>& shader);
 
+		void UpdateGUI() override;
+
 		bool Link();
 		void Use();
 

@@ -5,6 +5,7 @@
 #include <glad/glad.h>
 #include <string>
 
+
 struct SDL_Texture;
 
 namespace neu {
@@ -31,21 +32,19 @@ namespace neu {
 		void SetActive(GLuint unit) { glActiveTexture(unit); }
 		void Bind() { glBindTexture(m_target, m_texture); }
 
-		/// <summary>
-		/// Gets the dimensions of the texture in pixels.
-		/// </summary>
-		/// <returns>A vec2 containing the width and height of the texture</returns>
-		vec2 GetSize() { return m_size; }
+		void UpdateGUI() override;
+
+		glm::ivec2 GetSize() { return m_size; }
 
 		// Allow Renderer class to access the texture for drawing operations
 		friend class Renderer;
 
 		GLuint m_texture = 0;
-
 		GLenum m_target = GL_TEXTURE_2D;
-	private:
 
-		// The dimensions of the texture in pixels
-		vec2 m_size{ 0, 0 };
+		//Filter filter = Filter::Linear;
+		//Wrap wrap = Wrap::Repeat;
+
+		glm::ivec2 m_size{ 0, 0 };
 	};
 }

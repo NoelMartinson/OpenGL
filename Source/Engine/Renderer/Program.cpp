@@ -55,6 +55,10 @@ namespace neu {
 		glAttachShader(m_program, shader->m_shader);
 	}
 
+	void Program::UpdateGUI()
+	{
+	}
+
 	bool Program::Link() {
 		glLinkProgram(m_program);
 

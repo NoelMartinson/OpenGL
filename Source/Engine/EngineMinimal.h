@@ -50,6 +50,7 @@
 #include "Renderer/Model.h"
 #include "Renderer/Material.h"
 #include "Renderer/CubeMap.h"
+#include "Renderer/RenderTexture.h"
 
 // physics
 #include "Physics/Collidable.h"

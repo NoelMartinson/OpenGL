@@ -19,7 +19,7 @@ namespace neu {
 		};
 
 	public:
-		CLASS_PROTOTYPE(Material)
+		//CLASS_PROTOTYPE(Material)
 
 			Material() = default;
 		~Material() = default;
@@ -27,7 +27,7 @@ namespace neu {
 		bool Load(const std::string& filename);
 		void Bind();
 
-		void UpdateGUI() override;
+		void UpdateGUI();
 
 	public:
 		res_t<Program> program;

@@ -29,7 +29,7 @@ namespace neu {
 		/// Calculated by dividing the texture size by the number of columns and rows.
 		/// </summary>
 		/// <returns>A vec2 containing the frame width (x) and height (y)</returns>
-		vec2 GetSize() const;
+		glm::ivec2 GetSize() const;
 
 		/// <summary>
 		/// Gets the rectangle (UV coordinates) for a specific frame in the sprite sheet.
@@ -63,6 +63,8 @@ namespace neu {
 		/// </summary>
 		/// <returns>True if the animation loops; otherwise, false</returns>
 		bool IsLooping() const { return m_loop; }
+
+		void UpdateGUI() override;
 
 		/// <summary>
 		/// Gets the underlying texture resource containing the sprite sheet.
