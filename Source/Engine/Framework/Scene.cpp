@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Renderer/Renderer.h"
+#include "Engine.h"
 
 namespace neu {
     /// <summary>
@@ -57,12 +58,8 @@ namespace neu {
     }
 
     void Scene::UpdateGUI() {
-        //float fps = 1 / m_dt;
-        //float ms = 1000 * m_dt;
-
-        //ImVec4 color = (fps < 30) ? ImVec4{ 1, 0, 0, 1 } : ImVec4{ 1, 1, 1, 1 };
-        //ImGui::TextColored(color, "%.2f FPS (%.2f)", fps, ms);
         ImGui::ColorEdit3("Ambient", glm::value_ptr(m_ambientLight));
+        ImGui::Checkbox("Post Process", &m_postprocess);
     }
 
     /// <summary>
@@ -89,41 +86,63 @@ namespace neu {
     /// <param name="renderer">The renderer used to draw the actors.</param>
     void Scene::Draw(Renderer& renderer) {
         // get light
-        std::vector<LightComponent*> lights;
-        for (auto& actor : m_actors) {
-            if (!actor->active) continue;
+        auto lights = GetActorComponents<LightComponent>();
 
-            auto light = actor->GetComponent<LightComponent>();
-            if (light && light->active) {
-                lights.push_back(light);
-            }
-        }
+        // get cameras
+        auto cameras = GetActorComponents<CameraComponent>();
 
-        // get camera
-        CameraComponent* camera = nullptr;
-        for (auto& actor : m_actors) {
-            if (!actor->active) continue;
-
-            camera = actor->GetComponent<CameraComponent>();
-            if (camera && camera->active) break;
-        }
-
-        if (!camera) {
+        if (cameras.empty()) {
             LOG_WARNING("No camera active in scene");
             return;
         }
 
         // get programs
-        std::set<Program*> programs;
+        std::set<Program*> programSet;
         for (auto& actor : m_actors) {
             ModelRenderer* model = actor->GetComponent<ModelRenderer>();
             if (!model || !model->active) continue;
 
             if (model->material && model->material->program) {
-                programs.insert(model->material->program.get());
+                programSet.insert(model->material->program.get());
             }
         }
+        std::vector<Program*> programs(programSet.begin(), programSet.end());
 
+        for (auto& camera : cameras) {
+            PostProcessComponent* postprocessComponent = camera->owner->GetComponent<PostProcessComponent>();
+            bool renderToTexture = camera->outputTexture && (!postprocessComponent || (postprocessComponent && m_postprocess));
+
+            if (renderToTexture) {
+                camera->outputTexture->BindFramebuffer();
+                glViewport(0, 0, camera->outputTexture->m_size.x, camera->outputTexture->m_size.y);
+            }
+            camera->Clear();
+            DrawPass(renderer, programs, lights, camera);
+            if (renderToTexture) {
+                camera->outputTexture->UnbindFramebuffer();
+                glViewport(0, 0, renderer.GetWidth(), renderer.GetHeight());
+            }
+
+            if (renderToTexture && postprocessComponent) {
+                camera->Clear(); // <-- add
+
+                auto postProcessProgram = Resources().Get<Program>("shaders/postprocess.prog");
+                postProcessProgram->Use();
+                postprocessComponent->Apply(*postProcessProgram);
+                camera->outputTexture->Bind();
+                auto actor = GetActorByName("postprocess");
+                actor->Draw(renderer);
+            }
+
+        }
+    }
+
+    void Scene::DrawPass(Renderer& renderer,
+        std::vector<Program*>& programs,
+        std::vector<LightComponent*>& lights,
+        CameraComponent* camera)
+    {
+        // Set shaders
         for (auto& program : programs) {
             program->Use();
             program->SetUniform("u_ambient_light", m_ambientLight);
@@ -137,13 +156,9 @@ namespace neu {
             }
         }
 
-        // Iterate through all actors in the scene
+        // Draw all actors in the scene
         for (auto& actor : m_actors) {
-            // Only render actors that are marked as active
-            // This parallels the Update() logic for consistency
             if (actor->active) {
-                // Pass the renderer to each actor
-                // Each actor is responsible for its own drawing implementation
                 actor->Draw(renderer);
             }
         }
@@ -311,6 +326,7 @@ namespace neu {
         // This calls the parent class's Read() implementation
         //Object::Read(value);
         SERIAL_READ_NAME(value, "ambient_light", m_ambientLight);
+        SERIAL_READ_NAME(value, "post_process", m_postprocess);
 
         // SECTION 1: Process prototype definitions
         // Check if the serialized data contains a "prototypes" section

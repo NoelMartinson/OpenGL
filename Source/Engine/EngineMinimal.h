@@ -44,25 +44,26 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/Texture.h"
 #include "Renderer/TextureAnimation.h"
-#include "Renderer/Shader.h"
+#include "Renderer/RenderTexture.h"
+#include "Renderer/Cubemap.h"
+#include "Renderer/Shader.h" 
 #include "Renderer/Program.h"
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/Model.h"
 #include "Renderer/Material.h"
-#include "Renderer/CubeMap.h"
-#include "Renderer/RenderTexture.h"
 
 // physics
 #include "Physics/Collidable.h"
 
-//componenets 
+// components
 #include "Components/ModelRenderer.h"
 #include "Components/CameraComponent.h"
+#include "Components/PostProcessComponent.h"
 #include "Components/LightComponent.h"
 #include "Components/FirstPersonController.h"
 #include "Components/RotationComponent.h"
 
-// gui
+// gui / editor
 #include "GUI/GUI.h"
 #include "GUI/Editor.h"
 
@@ -77,9 +78,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
-#include <imgui.h>
-#include <imgui_internal.h>
 
 // standard library
 #include <string>

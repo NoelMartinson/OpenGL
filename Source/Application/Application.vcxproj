@@ -202,11 +202,15 @@
     <None Include="..\..\Build\Assets\materials\candle.mat" />
     <None Include="..\..\Build\Assets\materials\crate.mat" />
     <None Include="..\..\Build\Assets\materials\Halloween.mat" />
+    <None Include="..\..\Build\Assets\materials\ogre.mat" />
     <None Include="..\..\Build\Assets\materials\plane.mat" />
+    <None Include="..\..\Build\Assets\materials\postprocess.mat" />
     <None Include="..\..\Build\Assets\materials\reflection.mat" />
     <None Include="..\..\Build\Assets\materials\refraction.mat" />
+    <None Include="..\..\Build\Assets\materials\rtt.mat" />
     <None Include="..\..\Build\Assets\materials\skybox.mat" />
     <None Include="..\..\Build\Assets\materials\spot.mat" />
+    <None Include="..\..\Build\Assets\materials\squirrel.mat" />
     <None Include="..\..\Build\Assets\Meshes\enemy.msh" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\level.json" />
     <None Include="..\..\Build\Assets\Platformer\Scenes\prototypes.json" />
@@ -223,12 +227,18 @@
     <None Include="..\..\Build\Assets\shaders\lit_phong.prog" />
     <None Include="..\..\Build\Assets\shaders\lit_phong.vert" />
     <None Include="..\..\Build\Assets\shaders\cubemap.frag" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.frag" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.prog" />
+    <None Include="..\..\Build\Assets\shaders\postprocess.vert" />
     <None Include="..\..\Build\Assets\shaders\reflection.prog" />
     <None Include="..\..\Build\Assets\shaders\reflection.vert" />
     <None Include="..\..\Build\Assets\shaders\refraction.prog" />
     <None Include="..\..\Build\Assets\shaders\refraction.vert" />
     <None Include="..\..\Build\Assets\shaders\skybox.prog" />
     <None Include="..\..\Build\Assets\shaders\skybox.vert" />
+    <None Include="..\..\Build\Assets\shaders\unlit.frag" />
+    <None Include="..\..\Build\Assets\shaders\unlit.prog" />
+    <None Include="..\..\Build\Assets\shaders\unlit.vert" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

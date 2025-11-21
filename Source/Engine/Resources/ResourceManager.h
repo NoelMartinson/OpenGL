@@ -11,11 +11,11 @@ namespace neu {
     class ResourceManager : public Singleton<ResourceManager> {
     public:
         void RemoveAll() { m_resources.clear(); }
-        
+
         template<typename T, typename ... Args>
             requires std::derived_from<T, Resource>
         res_t<T> Get(const std::string& name, Args&& ... args);
-        
+
         template<typename T, typename ... Args>
             requires std::derived_from<T, Resource>
         res_t<T> GetWithID(const std::string& id, const std::string& name, Args&& ... args);
@@ -25,10 +25,12 @@ namespace neu {
         std::vector<T*> GetByType();
 
 
-    private:
-        
-        friend class Singleton<ResourceManager>;
+        template<typename T = Resource>
+            requires std::derived_from<T, Resource>
+        bool AddResource(const std::string& name, const res_t<T>& resource);
 
+    private:
+        friend class Singleton<ResourceManager>;
         ResourceManager() = default;
 
     private:
@@ -53,7 +55,7 @@ namespace neu {
 
             if (resource == nullptr) {
                 LOG_ERROR("Resource type mismatch: {}", key);
-                return res_t<T>(); 
+                return res_t<T>();  // Return empty shared_ptr on type mismatch
             }
 
             return resource;
@@ -63,7 +65,7 @@ namespace neu {
 
         if (resource->Load(name, std::forward<Args>(args)...) == false) {
             LOG_ERROR("Could not load resource: {}", name);
-            return res_t<T>(); 
+            return res_t<T>();  // Return empty shared_ptr on load failure
         }
 
         resource->name = key;
@@ -86,6 +88,23 @@ namespace neu {
         }
 
         return results;
+    }
+
+    template<typename T>
+        requires std::derived_from<T, Resource>
+    inline bool ResourceManager::AddResource(const std::string& name, const res_t<T>& resource) {
+        std::string key = toLower(name);
+
+        auto iter = m_resources.find(key);
+        if (iter != m_resources.end()) {
+            LOG_WARNING("Resource already exists {}", key);
+            return false;
+        }
+
+        resource->name = key;
+        m_resources[key] = resource;
+
+        return true;
     }
 
     inline ResourceManager& Resources() { return ResourceManager::Instance(); }
