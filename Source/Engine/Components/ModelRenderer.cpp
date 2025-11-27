@@ -7,13 +7,28 @@ namespace neu {
 	}
 
 	void ModelRenderer::Draw(Renderer& renderer) {
-		material->Bind();
-		material->program->SetUniform("u_model", owner->transform.GetMatrix());
+		if (material) {
+			material->Bind();
+			material->program->SetUniform("u_model", owner->transform.GetMatrix());
+		}
 
 		glDepthMask(enableDepth);
 		glCullFace(cullFace);
 
-		model->Draw(GL_TRIANGLES);
+		if (model) {
+			model->Draw(GL_TRIANGLES);
+		}
+	}
+
+	void ModelRenderer::Draw(Renderer& renderer, Program& program) {
+		program.SetUniform("u_model", owner->transform.GetMatrix());
+
+		glDepthMask(enableDepth);
+		glCullFace(cullFace);
+
+		if (model) {
+			model->Draw(GL_TRIANGLES);
+		}
 	}
 
 	void ModelRenderer::Read(const serial_data_t& value) {

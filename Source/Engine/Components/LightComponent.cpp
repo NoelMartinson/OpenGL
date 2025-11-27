@@ -16,8 +16,9 @@ namespace neu {
 		program.SetUniform(name + ".color", color);
 		program.SetUniform(name + ".intensity", intensity);
 		program.SetUniform(name + ".range", range);
-		program.SetUniform(name + ".innerCutoff", glm::radians(innerCutoff));
-		program.SetUniform(name + ".outerCutoff", glm::radians(outerCutoff));
+		program.SetUniform(name + ".innerSpotAngle", glm::radians(innerCutoff));
+		program.SetUniform(name + ".outerSpotAngle", glm::radians(outerCutoff));
+		program.SetUniform(name + ".shadowCaster", shadowCaster);
 	}
 
 	void LightComponent::Read(const serial_data_t& value) {
@@ -32,6 +33,8 @@ namespace neu {
 		SERIAL_READ(value, range);
 		SERIAL_READ(value, innerCutoff);
 		SERIAL_READ(value, outerCutoff);
+
+		SERIAL_READ(value, shadowCaster);
 	}
 
 	void LightComponent::UpdateGUI() {
@@ -45,10 +48,12 @@ namespace neu {
 			ImGui::DragFloat("Range", &range, 0.1f, 0.0f);
 		}
 		if (lightType == LightType::Spot) {
-			ImGui::DragFloat("InnerCutoff", &innerCutoff, 0.1f, 0.0f, outerCutoff);
-			ImGui::DragFloat("OuterCutoff", &outerCutoff, 0.1f, innerCutoff);
+			ImGui::DragFloat("InnerSpotAngle", &innerCutoff, 0.1f, 0.0f, outerCutoff);
+			ImGui::DragFloat("OuterSpotAngle", &outerCutoff, 0.1f, innerCutoff);
 
 			outerCutoff = math::max(innerCutoff, outerCutoff);
 		}
+
+		ImGui::Checkbox("Shadow Caster", &shadowCaster);
 	}
 }

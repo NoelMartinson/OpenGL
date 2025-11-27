@@ -22,10 +22,11 @@ void main()
 	
 	vec4 postprocess = color;
 
-	postprocess = postprocess * vec4(u_colorTint, 1);
-	//postprocess = vec4(1) - postprocess;
-	//apply postprocess effects
-	//if ((u_parameters & GRAYSCALE) != 0) / apply GRAYSCALE;
-
-	f_color = postprocess;
+	if ((u_parameters & GRAYSCALE) != 0u)	postprocess = <rgb is the average value of the rgb values>
+	if ((u_parameters & COLORTINT) != 0u)	postprocess = <multiply postprocess with u_colorTint>
+	if ((u_parameters & SCANLINE) != 0u)	postprocess = (int(gl_FragCoord.y) % 3 != 0) ? vec4(0, 0, 0, 1) : postprocess;
+	if ((u_parameters & GRAIN) != 0u)		postprocess = postprocess * random(gl_FragCoord.xy + u_time);
+	if ((u_parameters & INVERT) != 0u)		postprocess = <invert color>
+	
+	f_color = mix(color, postprocess, u_blend); // mix colors using u_blend (0-1)
 }
